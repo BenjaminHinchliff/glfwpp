@@ -2,6 +2,7 @@
 #define GLFWPP_GLFWPP_H
 
 #include <cassert>
+#include <cstdint>
 
 #include <GLFW/glfw3.h>
 
@@ -146,12 +147,12 @@ namespace glfw
 
     [[nodiscard]] inline std::vector<const char*> getRequiredInstanceExtensions()
     {
-        unsigned count;
+        uint32_t count;
         auto pExtensionNames = glfwGetRequiredInstanceExtensions(&count);
 
         std::vector<const char*> extensionNames;
         extensionNames.reserve(count);
-        for(int i = 0; i < count; ++i)
+        for(uint32_t i = 0; i < count; ++i)
         {
             extensionNames.push_back(pExtensionNames[i]);
         }
